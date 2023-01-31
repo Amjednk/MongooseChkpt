@@ -9,7 +9,7 @@ mongoose.connect(
 );
 
 /*Create and Save a Record of a Model*/
-const person1 = new Person({ name: "Amjed", age: 47, favoriteFoods: ["Chocolate", "Ice Cream", "Cheese"] });
+const person1 = new Person({ name: "Amjed", age: 46, favoriteFoods: ["Chocolate", "Ice Cream", "Cheese"] });
 person1.save().then(doc => {
     console.log(doc)
 })
@@ -45,7 +45,7 @@ async function start() {
     //See above operations
 
     /*Perform New Updates on a Document Using model.findOneAndUpdate()*/
-    await Person.findOneAndUpdate({"name":"Amjed"},{$set:{age:"46"}})
+    await Person.findOneAndUpdate({"name":"Amjed"},{$set:{age:"47"}})
     .then(updatePerson => {console.log("Updated: ", updatePerson)});
 
     /*Delete One Document Using model.findByIdAndRemove.*/
@@ -56,17 +56,6 @@ async function start() {
     /*Delete Many Documents with model.remove() replaced by model.deleteMany*/
     await Person.deleteMany({ name: "Minou" });
 
-//   const person2 = await User.findById("63d42894db9d14e4508f694b");
-//   console.log(person2);
-//   const user = await User.findOne({ name: "saif" });
-//   console.log(user);
-//   await User.deleteMany({ name: "saif" });
-
-// const updatedPerson = await User.findByIdAndUpdate(
-//     "63d42a71f9ed225329838e29",
-//     { name: "amine", hobbies: "Football" }
-// );
-// console.log(updatedPerson);
 }
 
 start();
